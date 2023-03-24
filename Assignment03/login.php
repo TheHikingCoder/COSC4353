@@ -1,5 +1,31 @@
 <?php
 
+	function login($email, $password)
+	{
+		
+		// Hardcoded values; will replace with SQL query in Assignment 04
+		$hardcodedEmail = 't@t.com';
+		$hardcodedPassword = '123';
+		
+		// This triggers if the attempted login matches a registered user's credentials
+		if ($email == $hardcodedEmail && $password == $hardcodedPassword)
+		{
+
+			return true;
+		
+		} 
+
+		// This triggers if the attempted login does not match a registered user's credentials
+		else
+		{
+
+			return false;
+		
+		}
+	
+	}
+	
+	// Start login process
 	session_start();
 
 	// Gets email and password from the 'login.html' form
@@ -31,31 +57,6 @@
 		header("Location: login.php?error=1");
 		exit();
 		
-	}
-	
-	function login($email, $password)
-	{
-		
-		// Hardcoded values; will replace with SQL query in Assignment 04
-		$hardcodedEmail = 't@t.com';
-		$hardcodedPassword = '123';
-		
-		// This triggers if the attempted login matches a registered user's credentials
-		if ($email == $hardcodedEmail && $password == $hardcodedPassword)
-		{
-
-			return true;
-		
-		} 
-
-		// This triggers if the attempted login does not match a registered user's credentials
-		else
-		{
-
-			return false;
-		
-		}
-	
 	}
 	
 ?>
