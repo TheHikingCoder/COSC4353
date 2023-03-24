@@ -1,9 +1,23 @@
 <?php
+	function price($gallons, $address, $deliveryD){
+        	$hardcodeAddress = '123 street';
+        	$hardcodeGallonsReq = '3';
+        	$hardcodeDelivery = '2023-04-01';
+
+        	if($gallons == $hardcodeGallonsReq && $address == $hardcodeAddress && $deliveryD == $hardcodeDelivery ){
+            		return true;
+        	}
+
+        	else{
+            		return false;
+        	}
+    }
+
     session_start();
     $price = "temporary";
-    $hardcodeAddress = '543 street';
+    $hardcodeAddress = '123 street';
     $hardcodeGallonsReq = '3';
-    $hardcodeDelivery = '04/01/2023';
+    $hardcodeDelivery = '2023-04-01';
 
     if (empty($_GET['address1']) && empty($_GET['galreq']) && empty($_GET['delivery'])){
         $address1 = $hardcodeAddress;
@@ -12,9 +26,15 @@
     }
     //Getting values from fuel quote form
     else{
-    $address1 = $_GET['address1']; 
-    $gallonReq = $_GET['galreq'];
-    $delivery = $_GET['delivery'];
+    	$address1 = $_GET['address1']; 
+    	$gallonReq = $_GET['galreq'];
+    	$delivery = $_GET['delivery'];
+    }
+
+  $result = price($gallonReq, $address1, $delivery);
+    if (!$result){
+        header("Location: fuelQuoteForm.php?error=1");
+        exit();
     }
    
 ?>
