@@ -62,7 +62,7 @@
       }
       
       //once information is stored in the database proceed to the fuel quote form
-      header("Location: fuelQuoteForm.html");
+      header("Location: fuelQuoteForm.php");
       exit();
     }
     else
