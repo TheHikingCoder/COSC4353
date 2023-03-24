@@ -1,7 +1,7 @@
 <?php
     session_start();
     //Temporary value if no address
-    $hardcodeAddress = '543 street';
+    $hardcodeAddress = '123 Street';
     if (empty($_GET['address1'])){
         $address1 = $hardcodeAddress;
     }
