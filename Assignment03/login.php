@@ -44,7 +44,7 @@
 		
 		// Redirects the user to the 'clientProfileManagement.html' page
 		// May need to change where this redirects to
-		header("Location: fuelQuoteForm.html");
+		header("Location: fuelQuoteForm.php");
 		exit();
 		
 	}
