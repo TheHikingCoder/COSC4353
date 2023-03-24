@@ -78,13 +78,12 @@
                     <label for="Total">Total Amount Due</label>
 					<input type="number" name = "total" placeholder="9999" step="0.01" readonly>
                 </form>
-<!-- 
-    Until Fuel Table Added, Comment this out 
+
                 <form class = "history" action = "fueltable.html">
                     <button>View Fuel History</button>
                     <br></br>
                 </form>
--->
+
                 <form class = "modify" action = "fuelQuoteForm.php">
                     <button>Modify Fuel Quote</button>
 				</form>
