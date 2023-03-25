@@ -65,7 +65,7 @@
 					</tr>
 					<?php writeToTable($orders) ?>
                 </table>
-                <button onclick="window.location.href='fuelQuoteForm.html'">Go Back</button>
+                <button onclick="window.location.href='fuelQuoteForm.php'">Go Back</button>
 			</div>
 		</div>
 	</body>
