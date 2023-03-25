@@ -79,7 +79,7 @@
 					<input type="number" name = "total" placeholder="9999" step="0.01" readonly>
                 </form>
 
-                <form class = "history" action = "fueltable.html">
+                <form class = "history" action = "fueltable.php">
                     <button>View Fuel History</button>
                     <br></br>
                 </form>
