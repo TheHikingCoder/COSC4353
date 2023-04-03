@@ -2,7 +2,7 @@
     session_start();
     include("connection.php")  ;
     function createAccount($email, $password, $confirmPassword, $con) {
-        $query = 'SELECT * FROM usercredentials WHERE ID="t@t.com"';
+        $query = 'SELECT * FROM usercredentials WHERE ID="$email"';
         $exists = mysqli_query($con, $query);
 
         if(!$exists || $password != $confirmPassword || $password == "" || $email == ""){
