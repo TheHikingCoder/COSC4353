@@ -1,38 +1,73 @@
 <?php
 
-	function login($email, $password, $con)
+	function login($email, $password)
 	{
 		
-		// Creates the SQL query
-		$sql = "SELECT * FROM users WHERE email = ? AND password = ?";
-		$stmt = $conn->prepare($sql);
-		$stmt->bind_param("ss", $email, $password);
+		// Database login information
+		$serverName = "localhost";
+		$userName = "ENTER USERNAME HERE";
+		$serverPassword = "ENTER PASSWORD HERE";
+		$dbname = "ENTER DATABASE NAME HERE";
+		
+		// Create database connection
+		$con = new mysqli($serverName, $userName, $serverPassword, $dbname);
+		
+		// Connection error check
+		if ($con->connect_error)
+		{
+			die("Connection has failed: " . $con->connect_error);
+		}
+		
+		// Creates the SQL query for email address
+		$sql = "SELECT * FROM UserCredentials WHERE U_Id = ?";
+		$stmt = $con->prepare($sql);
+		$stmt->bind_param("s", $email);
 		$stmt->execute();
 		
 		// Gets result
-		$result = $stmt->get_result();
+		$emailResult = $stmt->get_result();
 		
-		// This triggers if the attempted login matches a registered user's credentials
-		if ($result->num_rows === 1)
+		// This triggers if the entered email matches a registered user's email
+		if ($emailResult->num_rows == 1)
 		{
 
-			return true;
+			// Gets the hashed password
+			$row = $emailResult->fetch_assoc();
+			$hashPassword = $row['password'];
+			
+			// This triggers if the entered password matches the hashed password
+			if (password_verify($password, $hashPassword))
+			{
+				
+				return true;
+				
+			}
+			
+			// This triggers if the entered password does not match the hashed password
+			else
+			{
+				
+				return false;
+				
+			}
 		
 		} 
 
-		// This triggers if the attempted login does not match a registered user's credentials
+		// This triggers if the entered email does not match a registered user's email
 		else
 		{
 
 			return false;
 		
 		}
+		
+		// Closes the connection
+		$conn->close();
 	
 	}
 	
 	// Start login process
 	session_start();
-	include("connection.php");
 
 	// Gets email and password from the 'login.html' form
 	$email = $_POST['email'];
@@ -48,8 +83,7 @@
 		// Create session
 		$_SESSION['email'] = $email;
 		
-		// Redirects the user to the 'clientProfileManagement.html' page
-		// May need to change where this redirects to
+		// Redirects the user to the 'fuelQuoteForm.php' page
 		header("Location: fuelQuoteForm.php");
 		exit();
 		
