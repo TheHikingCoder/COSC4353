@@ -4,7 +4,7 @@
 
     $email = $_SESSION['email'];
     if(!isset($email)){
-        header("Location: login.html");
+        header("Location: index.html");
         exit();
     }
 
@@ -53,10 +53,10 @@
             }
 
             if (isset($checkifRow)){
-                $rateHistory = 0;
+                $rateHistory = 0.01;
             }
             else{
-                $rateHistory = 0.01;
+                $rateHistory = 0;
             }
 
             //check if gallons requested more than 1000
@@ -71,7 +71,7 @@
            
             $suggestPrice = $currPrice + $margin;
 
-            $totalPrice = $currPrice * $suggestPrice;
+            $totalPrice = $gallonReq * $suggestPrice;
 
 
            // echo "PRICE WORKS";
@@ -84,9 +84,11 @@
             }
             */
         }
+	/*
         else{
             echo "INVALID";
         }
+	*/
         
     
     }
