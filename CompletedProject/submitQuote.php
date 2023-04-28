@@ -3,7 +3,7 @@
     include ("connection.php");
     $email = $_SESSION['email'];
     if (!isset($email)){
-        header("Location: login.html");
+        header("Location: index.html");
         exit();
     }
 
@@ -15,7 +15,7 @@
         $totalPrice = $_POST['total'];
 
         $query = "INSERT INTO FuelOrders (userID, gallons, deliveryAddress, deliveryDate, price, total)
-                  VALUES ($email, $galReq, $address, $delivery, $suggestPrice, $totalPrice)";
+                  VALUES ('$email', '$galReq', '$address', '$delivery', '$suggestPrice', '$totalPrice')";
         $result = mysqli_query($con, $query);
     
     }
