@@ -5,13 +5,14 @@
 
 	$email = $_SESSION['email'];
 	if (!isset($email)){
-		header("Location: login.html");
+		header("Location: index.html");
 		exit();
 	}
 	
 	//getting address1 from client information table
 	$sql = "SELECT Address1 FROM ClientInformation WHERE user_ID = '$email'";
 	$result = mysqli_query($con, $sql);
+	//$address1 = mysqli_fetch_assoc($result);
 	while($row = mysqli_fetch_array($result)){
 		$address1 = $row['Address1'];
 	}
@@ -51,6 +52,11 @@
 					<input type="date" name = "delivery" id="delivery" required/>
 
                 	<button>Get Fuel Quote</button>
+					<br></br>
+				</form>
+				
+				<form class = "history" action = "fuelTable.php">
+                    <button>View Fuel Quote History</button>
 				</form>
 			</div>
 		</div>
